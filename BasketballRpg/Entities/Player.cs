@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasketballRpg.Entities
 {
-    public interface IPlayer
+    public interface Player
     {
         string Name { get; }
         int Health { get; }      // Stamina
