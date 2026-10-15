@@ -19,6 +19,15 @@ namespace BasketballRpg.Entities
         public int JerseyNumber { get; set; } = 0;
         public string Hometown { get; set; } = "Undrafted Pool";
 
-       
+        public Guard(string name) => Name = name;
+
+        public void Act() => Console.WriteLine($"{Name} does a lightning-quick crossover and explodes to the basket.");
+        public void Speak() => Console.WriteLine($"\"{Name} screams: Watch out for the trailing back-cut screen!\"");
+
+        public void PrintDetails()
+        {
+            Console.WriteLine($"--- #{JerseyNumber} {Name} (Position: Guard from {Hometown}) ---\n" +
+                              $"Stamina: {Health} | Defensive Coverage: {Defense} | Acceleration: {Speed} | Physicality: {Strength} | Court Vision: {Intellect} | Handles: {Agility}");
+        }
     }
 }
