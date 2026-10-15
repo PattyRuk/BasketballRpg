@@ -27,7 +27,7 @@ namespace BasketballRpg.Entities
         public void PrintDetails()
         {
             Console.WriteLine($"--- #{JerseyNumber} {Name} (Position: Guard from {Hometown}) ---\n" +
-                              $"Stamina: {Health} | Defensive Coverage: {Defense} | Acceleration: {Speed} | Physicality: {Strength} | Court Vision: {Intellect} | Handles: {Agility}");
+                              $"Stamina: {Health} | Defensive Coverage: {Defense} | Acceleration: {Speed} | Physicality: {Strength} | Court Vision: {Intellect} | Ball Handle: {Agility}");
         }
     }
 }

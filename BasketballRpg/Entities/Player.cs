@@ -14,7 +14,7 @@ namespace BasketballRpg.Entities
         int Speed { get; }       // Acceleration
         int Strength { get; }    // Physicality
         int Intellect { get; }   // Court Vision / IQ
-        int Agility { get; }     // Ball Handling Control
+        int Agility { get; }     // Ball Handles
 
         int JerseyNumber { get; set; }
         string Hometown { get; set; }
