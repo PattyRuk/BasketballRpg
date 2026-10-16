@@ -31,6 +31,24 @@ namespace BasketballRpg.Inventory
             }
         }
 
+        public void DisplayItemByCategory(string selectedCategory)
+        {
+            Console.WriteLine($"--- Category Search - View: [{selectedCategory}] ---");
+            bool matchFound = false;
 
+            foreach (var item in _lockerRoomItems)
+            {
+                if (item.Category.Equals(selectedCategory, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($" -> Match: {item.ItemName}");
+                    matchFound = true;
+                }
+            }
+
+            if (!matchFound)
+            {
+                Console.WriteLine($"[Zero Records] No tracked assets fit category '{selectedCategory}'.");
+            }
+        }
     }
 }
