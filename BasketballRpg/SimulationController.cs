@@ -180,6 +180,28 @@ namespace BasketballRpg
             }
         }
 
+        private void HandleSimulation()
+        {
+            if (_draftedPlayer == null)
+            {
+                Console.WriteLine("Notice: No Active Players Found.");
+                return;
+            }
 
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            _draftedPlayer.PrintDetails();
+            _draftedPlayer.Speak();
+            _draftedPlayer.Act();
+            Console.ResetColor();
+        }
+
+        private void HandleGameSettings()
+        {
+            Console.Write("Change League Game Mode (Arcade / NBA Live/ StreetBall): ");
+            _leagueHub.GameMode = Console.ReadLine()?.Trim() ?? "Arcade";
+
+            Console.Write("Advance Court Period (1st Quarter / 2nd Quarter / 3rd Quarter / 4th Quarter): ");
+            _leagueHub.MatchQuarter = Console.ReadLine()?.Trim() ?? "1st Quarter";
+        }
     }
 }
