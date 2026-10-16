@@ -10,7 +10,12 @@ namespace BasketballRpg.Inventory
     {
         private readonly List<InventoryItem> _lockerRoomItems = new List<InventoryItem>();
 
-
+        public void GetItem(string name, string category)
+        {
+            InventoryItem newItem = new InventoryItem(name, category);
+            _lockerRoomItems.Add(newItem);
+            Console.WriteLine($"[Locker Facility] Tracked item '{name}' inside the '{category}' cluster.");
+        }
 
 
 
