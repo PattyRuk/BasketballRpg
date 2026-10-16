@@ -11,11 +11,8 @@ namespace BasketballRpg
         private static LeagueSimulation? _instance;
         private static readonly object _lock = new object();
 
-        private const string DefaultStyle = "Simulation";
-        private const string DefaultPeriod = "1st Quarter";
-
-        public string GameStyle { get; set; } = DefaultStyle;
-        public string MatchQuarter { get; set; } = DefaultPeriod;
+        public string GameMode { get; set; } = "Simulation";
+        public string MatchQuarter { get; set; } = "1st Quarter";
 
         private LeagueSimulation() { }
 
@@ -36,7 +33,7 @@ namespace BasketballRpg
 
         public void PrintLeagueStatus()
         {
-            Console.WriteLine($"[LEAGUE STATUS] Period: {MatchQuarter} | Game Mode: {GameStyle}");
+            Console.WriteLine($"[LEAGUE STATUS] Period: {MatchQuarter} | Game Mode: {GameMode}");
         }
     }
 }
