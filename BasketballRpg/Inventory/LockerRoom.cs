@@ -47,7 +47,7 @@ namespace BasketballRpg.Inventory
 
             if (!matchFound)
             {
-                Console.WriteLine($"[Zero Records] No tracked assets fit category '{selectedCategory}'.");
+                Console.WriteLine($"[Zero Records] No items fit category '{selectedCategory}'.");
             }
         }
     }
