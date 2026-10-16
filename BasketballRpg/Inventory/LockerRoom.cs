@@ -17,7 +17,19 @@ namespace BasketballRpg.Inventory
             Console.WriteLine($"[Locker Facility] Tracked item '{name}' inside the '{category}' cluster.");
         }
 
-
+        public void DisplayItems()
+        {
+            Console.WriteLine("--- Locker Room Full Items View ---");
+            if (_lockerRoomItems.Count == 0)
+            {
+                Console.WriteLine("(Inventory contains 0 items)");
+                return;
+            }
+            foreach (var item in _lockerRoomItems)
+            {
+                Console.WriteLine($"[*] {item.ItemName} | Category: {item.Category}");
+            }
+        }
 
 
     }
