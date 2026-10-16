@@ -60,10 +60,10 @@ namespace BasketballRpg
                     HandleDrafting();
                     break;
                 case "2":
-                    HandleTraining();
+                    HandleBadges();
                     break;
                 case "3":
-                    HandleInventory();
+                    HandleItems();
                     break;
                 case "4":
                     HandleSimulation();
@@ -118,6 +118,35 @@ namespace BasketballRpg
                 Console.WriteLine($"[Error] {ex.Message}");
                 Console.ResetColor();
             }
+        }
+
+        private void HandleBadges()
+        {
+            if (_draftedPlayer == null)
+            {
+                Console.WriteLine("Notice: Please draft/create a player via Option 1 before executing training drills.");
+                return;
+            }
+
+            Console.WriteLine("Available Specialization Upgrades:\n1. Three-Point Sniper Badge\n2. Lockdown Defender Badge");
+            Console.Write("Select training focus: ");
+            string badgeChoice = Console.ReadLine()?.Trim() ?? "";
+
+            if (badgeChoice == "1")
+            {
+                _draftedPlayer = new SniperBadge(_draftedPlayer);
+                Console.WriteLine($"[Upgrade Log] {_draftedPlayer.Name} unlocked the Sniper badge modification.");
+            }
+            else if (badgeChoice == "2")
+            {
+                _draftedPlayer = new LockdownBadge(_draftedPlayer);
+                Console.WriteLine($"[Upgrade Log] {_draftedPlayer.Name} unlocked the Lockdown Defender badge modification.");
+            }
+            else
+            {
+                Console.WriteLine("Notice: Drill skipped due to unrecognized choice.");
+            }
+            _draftedPlayer.PrintDetails();
         }
 
 
