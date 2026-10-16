@@ -16,6 +16,27 @@ namespace BasketballRpg.Factories
             _player = basePlayer;
         }
 
+        public PlayerCustomizer SetJerseyNumber(int number)
+        {
+            if (number >= 0 && number <= 99)
+            {
+                _player.JerseyNumber = number;
+            }
+            return this;
+        }
 
+        public PlayerCustomizer SetHometown(string location)
+        {
+            if (!string.IsNullOrWhiteSpace(location))
+            {
+                _player.Hometown = location;
+            }
+            return this;
+        }
+
+        public Player Build()
+        {
+            return _player;
+        }
     }
 }
