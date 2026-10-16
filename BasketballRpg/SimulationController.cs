@@ -83,6 +83,43 @@ namespace BasketballRpg
             }
         }
 
-       
+        private void HandleDrafting()
+        {
+            Console.Write("Enter player jersey name: ");
+            string name = Console.ReadLine()?.Trim() ?? "Rookie";
+
+            Console.Write("Choose Court Position (Guard / Forward / Center): ");
+            string position = Console.ReadLine()?.Trim() ?? "Guard";
+
+            try
+            {
+                Player basicPlayer = PlayerFactory.CreatePlayer(position, name);
+
+                Console.Write("Enter Custom Jersey Number (or leave blank for default 0): ");
+                string jerseyInput = Console.ReadLine()?.Trim() ?? "";
+                int.TryParse(jerseyInput, out int jerseyNum);
+
+                Console.Write("Enter Custom Home College City (or leave blank): ");
+                string homeTown = Console.ReadLine()?.Trim() ?? "Undrafted";
+
+                _draftedPlayer = new PlayerCustomizer(basicPlayer)
+                    .SetJerseyNumber(jerseyNum)
+                    .SetHometown(homeTown)
+                    .Build();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n[Success] Player added successfully!");
+                Console.ResetColor();
+                _draftedPlayer.PrintDetails();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[Error] {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+
     }
 }
