@@ -16,7 +16,7 @@ namespace BasketballRpg.Factories
                 "guard" => new Guard(name),
                 "forward" => new Forward(name),
                 "center" => new Center(name),
-                _ => throw new ArgumentException("Provided position mismatch. Valid inputs are: Guard, Forward, Center.")
+                _ => throw new ArgumentException("Provided position not found. Valid inputs are: Guard, Forward, Center.")
             };
         }
     }
