@@ -19,7 +19,7 @@ namespace BasketballRpg.Inventory
 
         public void DisplayItems()
         {
-            Console.WriteLine("--- Locker Room Full Items View ---");
+            Console.WriteLine("\n--- Locker Room Full Items View ---");
             if (_lockerRoomItems.Count == 0)
             {
                 Console.WriteLine("(Inventory contains 0 items)");
@@ -33,7 +33,7 @@ namespace BasketballRpg.Inventory
 
         public void DisplayItemByCategory(string selectedCategory)
         {
-            Console.WriteLine($"--- Category Search - View: [{selectedCategory}] ---");
+            Console.WriteLine($"\n--- Category Search - View: [{selectedCategory}] ---");
             bool matchFound = false;
 
             foreach (var item in _lockerRoomItems)

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BasketballRpg
 {
-    public sealed class LeagueSimulation
+    public class LeagueSimulation
     {
         private static LeagueSimulation? _instance;
         private static readonly object _lock = new object();
 
-        public string GameMode { get; set; } = "Simulation";
+        public string GameMode { get; set; } = "Arcade";
         public string MatchQuarter { get; set; } = "1st Quarter";
 
         private LeagueSimulation() { }
