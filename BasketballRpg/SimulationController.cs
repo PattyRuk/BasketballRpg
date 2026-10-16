@@ -12,14 +12,14 @@ namespace BasketballRpg
 {
     public class SimulationController
     {
-        private readonly LeagueSimulation _leagueHub;
+        private readonly LeagueSimulation _leaguesimulator;
         private readonly LockerRoom _lockerRoom;
         private Player? _draftedPlayer;
         private bool _isRunning;
 
         public SimulationController()
         {
-            _leagueHub = LeagueSimulation.Instance;
+            _leaguesimulator = LeagueSimulation.Instance;
             _lockerRoom = new LockerRoom();
             _isRunning = true;
         }
@@ -27,7 +27,7 @@ namespace BasketballRpg
         public void RunEngineLoop()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("=== BASKETBALL FANTASY RPG ENGINE ===");
+            Console.WriteLine("========= BASKETBALL FANTASY RPG ENGINE =========");
             Console.ResetColor();
 
             while (_isRunning)
@@ -42,7 +42,7 @@ namespace BasketballRpg
         private void PrintMenuOptions()
         {
             Console.WriteLine("\n==============================================");
-            _leagueHub.PrintLeagueStatus();
+            _leaguesimulator.PrintLeagueStatus();
             Console.WriteLine("1. Draft & Customize Player");
             Console.WriteLine("2. Player Badges");
             Console.WriteLine("3. Locker Room Items");
@@ -85,24 +85,24 @@ namespace BasketballRpg
 
         private void HandleDrafting()
         {
-            Console.Write("Enter player jersey name: ");
+            Console.Write("Enter player name: ");
             string name = Console.ReadLine()?.Trim() ?? "Rookie";
 
-            Console.Write("Choose Court Position (Guard / Forward / Center): ");
+            Console.Write("Choose player Position (Guard / Forward / Center): ");
             string position = Console.ReadLine()?.Trim() ?? "Guard";
 
             try
             {
-                Player basicPlayer = PlayerFactory.CreatePlayer(position, name);
+                Player player = PlayerFactory.CreatePlayer(position, name);
 
                 Console.Write("Enter Custom Jersey Number (or leave blank for default 0): ");
                 string jerseyInput = Console.ReadLine()?.Trim() ?? "";
                 int.TryParse(jerseyInput, out int jerseyNum);
 
-                Console.Write("Enter Custom Home College City (or leave blank): ");
+                Console.Write("Enter Custom Home City/Location (or leave blank for Undrafted): ");
                 string homeTown = Console.ReadLine()?.Trim() ?? "Undrafted";
 
-                _draftedPlayer = new PlayerCustomizer(basicPlayer)
+                _draftedPlayer = new PlayerCustomizer(player)
                     .SetJerseyNumber(jerseyNum)
                     .SetHometown(homeTown)
                     .Build();
@@ -130,14 +130,14 @@ namespace BasketballRpg
 
             Console.WriteLine("Available Specialization Upgrades:\n1. Three-Point Sniper Badge\n2. Lockdown Defender Badge");
             Console.Write("Select training focus: ");
-            string badgeChoice = Console.ReadLine()?.Trim() ?? "";
+            string choice = Console.ReadLine()?.Trim() ?? "";
 
-            if (badgeChoice == "1")
+            if (choice == "1")
             {
                 _draftedPlayer = new SniperBadge(_draftedPlayer);
                 Console.WriteLine($"[Upgrade Log] {_draftedPlayer.Name} unlocked the Sniper badge modification.");
             }
-            else if (badgeChoice == "2")
+            else if (choice == "2")
             {
                 _draftedPlayer = new LockdownBadge(_draftedPlayer);
                 Console.WriteLine($"[Upgrade Log] {_draftedPlayer.Name} unlocked the Lockdown Defender badge modification.");
@@ -198,10 +198,10 @@ namespace BasketballRpg
         private void HandleGameSettings()
         {
             Console.Write("Change League Game Mode (Arcade / NBA Live/ StreetBall): ");
-            _leagueHub.GameMode = Console.ReadLine()?.Trim() ?? "Arcade";
+            _leaguesimulator.GameMode = Console.ReadLine()?.Trim() ?? "Arcade";
 
             Console.Write("Advance Court Period (1st Quarter / 2nd Quarter / 3rd Quarter / 4th Quarter): ");
-            _leagueHub.MatchQuarter = Console.ReadLine()?.Trim() ?? "1st Quarter";
+            _leaguesimulator.MatchQuarter = Console.ReadLine()?.Trim() ?? "1st Quarter";
         }
     }
 }
