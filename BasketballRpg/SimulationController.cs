@@ -149,6 +149,37 @@ namespace BasketballRpg
             _draftedPlayer.PrintDetails();
         }
 
+        private void HandleItems()
+        {
+            Console.WriteLine("Locker Room Management:\n1. Track New Item\n2. Display Full Locker\n3. Filter Item by Category");
+            Console.Write("Enter selection: ");
+            string choice = Console.ReadLine()?.Trim() ?? "";
+
+            if (choice == "1")
+            {
+                Console.Write("Enter Item Name (e.g., 'Grip Socks', 'Ankle Braces', 'Sports Drink'): ");
+                string name = Console.ReadLine()?.Trim() ?? "Standard item";
+                Console.Write("Enter Category (Equipment / Medical / Consumable): ");
+                string category = Console.ReadLine()?.Trim() ?? "Equipment";
+
+                _lockerRoom.GetItem(name, category);
+            }
+            else if (choice == "2")
+            {
+                _lockerRoom.DisplayItems();
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Enter filter criteria keyword (Equipment, Medical, or Consumable): ");
+                string filter = Console.ReadLine()?.Trim() ?? "";
+                _lockerRoom.DisplayItemByCategory(filter);
+            }
+            else
+            {
+                Console.WriteLine("Notice: Action cancelled. Invalid option.");
+            }
+        }
+
 
     }
 }
