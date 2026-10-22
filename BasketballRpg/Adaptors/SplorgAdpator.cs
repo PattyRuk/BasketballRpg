@@ -10,7 +10,7 @@ namespace BasketballRpg.Adaptors
     public class SplorgAdaptor : Player
     {
         private readonly Splorg _legacySplorg;
-        public  string Name => $"{_legacySplorg.Name} ({_legacySplorg.Color} Mascot)";
+        public string Name => $"{_legacySplorg.Name} ({_legacySplorg.Color} Mascot)";
         public int Health => (int)(_legacySplorg.BubbleMatterRemaining * 100);
         public int Defense => _legacySplorg.BubbleDurability * 3;
         public int Speed => _legacySplorg.Speed * 3;
@@ -18,7 +18,14 @@ namespace BasketballRpg.Adaptors
         public int Intellect => _legacySplorg.Smarts * 3;
         public int Agility => _legacySplorg.Finesse * 3;
 
-       
+        public int JerseyNumber { get; set; } = 0;
+        public string Hometown { get; set; } = "Undrafted Pool";
+        public SplorgAdaptor(Splorg legacySplorg)
+        {
+            _legacySplorg = legacySplorg ?? throw new ArgumentNullException(nameof(legacySplorg));
+        }
+
+
         
     }
 }
