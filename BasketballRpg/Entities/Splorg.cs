@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasketballRpg
+namespace BasketballRpg.Entities
 {
     public class Splorg
     {
