@@ -20,7 +20,35 @@ namespace BasketballRpg
             Console.Write("Choose player Position (Guard / Forward / Center / Mascot-Red / Mascot-Green / Mascot-Blue): ");
             string position = Console.ReadLine()?.Trim() ?? "Guard";
 
+            try
+            {
+                Player player = PlayerFactory.CreatePlayer(position, name);
 
+                Console.Write("Enter Custom Jersey Number (or leave blank for default 0): ");
+                string jerseyInput = Console.ReadLine()?.Trim() ?? "";
+                int.TryParse(jerseyInput, out int jerseyNum);
+
+                Console.Write("Enter Custom Home City/Location (or leave blank for Undrafted): ");
+                string homeTown = Console.ReadLine()?.Trim() ?? "Undrafted";
+
+                Player fullyBuiltPlayer = new PlayerCustomizer(player)
+                    .SetJerseyNumber(jerseyNum)
+                    .SetHometown(homeTown)
+                    .Build();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n[Success] Player added successfully!");
+                Console.ResetColor();
+                fullyBuiltPlayer.PrintDetails();
+                return fullyBuiltPlayer;
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[Error] {ex.Message}");
+                Console.ResetColor();
+                return null;
+            }
         }
 
 
