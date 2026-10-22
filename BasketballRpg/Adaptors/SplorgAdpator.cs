@@ -24,8 +24,20 @@ namespace BasketballRpg.Adaptors
         {
             _legacySplorg = legacySplorg ?? throw new ArgumentNullException(nameof(legacySplorg));
         }
-
-
+        public void Act()
+        {
+            _legacySplorg.SplorgAction();
+        }
+        public void Speak()
+        {
+            Console.WriteLine($"\"{Name} screams: {_legacySplorg.Communicate()}\"");
+        }
+        public void PrintDetails()
+        {
+            Console.WriteLine($"--- #{JerseyNumber} {Name} from {Hometown} ---");
+            _legacySplorg.printDescription();
+            Console.WriteLine($"Stamina: {Health} | Defensive Coverage: {Defense} | Acceleration: {Speed} | Physicality: {Strength} | Court IQ: {Intellect} | Ball Handle: {Agility}");
+        }
         
     }
 }
