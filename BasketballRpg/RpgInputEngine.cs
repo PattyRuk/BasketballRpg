@@ -51,6 +51,33 @@ namespace BasketballRpg
             }
         }
 
+        public Player ProcessBadges(Player activePlayer)
+        {
+            Console.WriteLine("Available Specialization Upgrades:\n1. Three-Point Sniper Badge\n2. Lockdown Defender Badge");
+            Console.Write("Select training focus: ");
+            string choice = Console.ReadLine()?.Trim() ?? "";
+
+            Player updatedPlayer = activePlayer;
+
+            if (choice == "1")
+            {
+                updatedPlayer = new SniperBadge(activePlayer);
+                Console.WriteLine($"[Upgrade Log] {updatedPlayer.Name} unlocked the Sniper badge modification.");
+            }
+            else if (choice == "2")
+            {
+                updatedPlayer = new LockdownBadge(activePlayer);
+                Console.WriteLine($"[Upgrade Log] {updatedPlayer.Name} unlocked the Lockdown Defender badge modification.");
+            }
+            else
+            {
+                Console.WriteLine("Notice: Drill skipped due to unrecognized choice.");
+            }
+
+            updatedPlayer.PrintDetails();
+            return updatedPlayer;
+        }
+
 
     }
 }
