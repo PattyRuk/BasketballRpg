@@ -62,22 +62,21 @@ namespace BasketballRpg
             if (choice == "1")
             {
                 updatedPlayer = new SniperBadge(activePlayer);
-                Console.WriteLine($"[Upgrade Log] {updatedPlayer.Name} unlocked the Sniper badge modification.");
+                Console.WriteLine($"\n[Upgrade Log] {updatedPlayer.Name} unlocked the Sniper badge modification.");
             }
             else if (choice == "2")
             {
                 updatedPlayer = new LockdownBadge(activePlayer);
-                Console.WriteLine($"[Upgrade Log] {updatedPlayer.Name} unlocked the Lockdown Defender badge modification.");
+                Console.WriteLine($"\n[Upgrade Log] {updatedPlayer.Name} unlocked the Lockdown Defender badge modification.");
             }
             else
             {
-                Console.WriteLine("Notice: Drill skipped due to unrecognized choice.");
+                Console.WriteLine("\nNotice: Drill skipped due to unrecognized choice.");
             }
 
             updatedPlayer.PrintDetails();
             return updatedPlayer;
         }
-
         public void OpenLockerRoom(LockerRoom lockerRoom)
         {
             Console.WriteLine("Locker Room Management:\n1. Track New Item\n2. Display Full Locker\n3. Filter Item by Category");
@@ -108,7 +107,6 @@ namespace BasketballRpg
                 Console.WriteLine("Notice: Action cancelled. Invalid option.");
             }
         }
-
         public void ExecuteSimulation(Player? player)
         {
             if (player == null)
@@ -123,7 +121,6 @@ namespace BasketballRpg
             player.Act();
             Console.ResetColor();
         }
-
         public void ModifyLeagueSettings(LeagueSimulation leagueHub)
         {
             Console.Write("Change League Game Mode (Arcade / NBA Live / StreetBall): ");

@@ -17,7 +17,6 @@ namespace BasketballRpg
         private Player? _draftedPlayer;
         private bool _isRunning;
         private readonly RpgInputEngine _inputEngine;
-
         public SimulationController()
         {
             _leaguesimulator = LeagueSimulation.Instance;
@@ -40,7 +39,6 @@ namespace BasketballRpg
                 ProcessInput(choice);
             }
         }
-
         private void PrintMenuOptions()
         {
             Console.WriteLine("\n==============================================");
@@ -53,7 +51,6 @@ namespace BasketballRpg
             Console.WriteLine("6. Shut Down Simulation");
             Console.Write("Enter your selected choice: ");
         }
-
         private void ProcessInput(string choice)
         {
             switch (choice)
@@ -62,7 +59,6 @@ namespace BasketballRpg
                     Player? drafted = _inputEngine.DraftPlayer();
                     if (drafted != null) _draftedPlayer = drafted;
                     break;
-
                 case "2":
                     if (_draftedPlayer == null)
                     {
@@ -71,24 +67,19 @@ namespace BasketballRpg
                     }
                     _draftedPlayer = _inputEngine.ProcessBadges(_draftedPlayer);
                     break;
-
                 case "3":
                     _inputEngine.OpenLockerRoom(_lockerRoom);
                     break;
-
                 case "4":
                     _inputEngine.ExecuteSimulation(_draftedPlayer);
                     break;
-
                 case "5":
                     _inputEngine.ModifyLeagueSettings(_leaguesimulator);
                     break;
-
                 case "6":
                     _isRunning = false;
                     Console.WriteLine("Safely shutting down basketball simulation engine.");
                     break;
-
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("[Error] Invalid. Please enter a number from 1 to 6.");
