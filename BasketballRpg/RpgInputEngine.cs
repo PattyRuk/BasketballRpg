@@ -86,7 +86,7 @@ namespace BasketballRpg
 
             if (choice == "1")
             {
-                Console.Write("Enter Item Name (e.g.,'Ankle Braces', 'Sports Drink'): ");
+                Console.Write("Enter Item Name (e.g. 'Ankle Braces', 'Sports Drink'): ");
                 string name = Console.ReadLine()?.Trim() ?? "Standard item";
                 Console.Write("Enter Category (Equipment / Medical / Consumable): ");
                 string category = Console.ReadLine()?.Trim() ?? "Equipment";
@@ -109,6 +109,21 @@ namespace BasketballRpg
             }
         }
 
- 
+        public void ExecuteSimulation(Player? player)
+        {
+            if (player == null)
+            {
+                Console.WriteLine("Notice: No Active Players Found.");
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            player.PrintDetails();
+            player.Speak();
+            player.Act();
+            Console.ResetColor();
+        }
+
+
     }
 }
