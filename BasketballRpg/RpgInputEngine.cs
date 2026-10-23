@@ -124,6 +124,13 @@ namespace BasketballRpg
             Console.ResetColor();
         }
 
+        public void ModifyLeagueSettings(LeagueSimulation leagueHub)
+        {
+            Console.Write("Change League Game Mode (Arcade / NBA Live / StreetBall): ");
+            leagueHub.GameMode = Console.ReadLine()?.Trim() ?? "Arcade";
 
+            Console.Write("Advance Court Period (1st Quarter / 2nd Quarter / 3rd Quarter / 4th Quarter): ");
+            leagueHub.MatchQuarter = Console.ReadLine()?.Trim() ?? "1st Quarter";
+        }
     }
 }
